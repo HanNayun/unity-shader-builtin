@@ -114,7 +114,7 @@ Shader "Shaders/Chapter 9/ForwardRendering"
 
             half4 frag(v2f i) : SV_Target
             {
-                    #ifdef USING_DIRECTIONAL_LIGHT
+                #ifdef USING_DIRECTIONAL_LIGHT
                 fixed3 lightDir = normalize(_WorldSpaceLightPos0.xyz);
                 #else
                 fixed3 lightDir = normalize(_WorldSpaceLightPos0.xyz - i.pos);
@@ -131,7 +131,7 @@ Shader "Shaders/Chapter 9/ForwardRendering"
                 fixed3 light = _LightColor0.rgb;
                 fixed3 diffuse = Diffuse(i.normal, lightDir, _Diffuse, light);
                 fixed3 specular = Specular(i.normal, viewDir, lightDir, _Gloss, _Specular, light);
-                return fixed4(atten * (diffuse + specular), 1.0);   
+                return fixed4(atten * (diffuse + specular), 1.0);
             }
             ENDCG
 
